@@ -1,8 +1,6 @@
 const _ = require('lodash');
 const url = require('url');
 
-const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b([^>]*)>/gi;
-
 const defaultOptions = {
     allowedTags: [
         'br', 'hr',
@@ -23,6 +21,8 @@ const defaultOptions = {
     },
     allowNullProtocol: true
 };
+
+const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b([^>]*)>/gi;
 
 function escapeHtml(text, options) {
     options = _.extend(defaultOptions, options);

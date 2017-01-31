@@ -1,8 +1,8 @@
-# escape-html
+# escape-html-whitelist
 
 [![npm version](https://badge.fury.io/js/escape-html-whitelist.svg)](https://badge.fury.io/js/escape-html-whitelist)
 
-*escape-html* escapes HTML tags with usr-defined whitelist support.
+Escapes HTML tags with user-defined whitelist support.
 
 Inspired by [punkave/sanitize-html](https://github.com/punkave/sanitize-html),
 but escape-html **escapes** codes instead of removing them.
@@ -81,7 +81,7 @@ When the tag name is `'*'`, it will match all tags.
 
 #### Allowing Protocols
 
-Especially for `href` attribute, *escape-html* checks its content.
+Especially for `href` attribute, *escape-html-whitelist* checks its content.
 When its content contains URL not listed on `options.allowedProtocols`, the content will be removed.
 The key of the `options.allowedProtocols` object is a tag name, and the value is an array of protocol names.
 
@@ -92,6 +92,6 @@ but deny any other thing such as a mailto link or javascript code.
 {
     allowedProtocols: {
         '*': ['http', 'https', 'data']
-    },
+    }
 }
 ```
