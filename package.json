@@ -1,0 +1,26 @@
+{
+  "name": "escape-html",
+  "version": "0.1.0",
+  "description": "Escape HTML tags with whitelist support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatamake/escape-html.git"
+  },
+  "keywords": [
+    "html",
+    "escape"
+  ],
+  "author": "cumul <gg6123@naver.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hatamake/escape-html/issues"
+  },
+  "homepage": "https://github.com/hatamake/escape-html#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
