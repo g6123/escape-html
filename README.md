@@ -5,7 +5,7 @@
 Escapes HTML tags with user-defined whitelist support.
 
 Inspired by [punkave/sanitize-html](https://github.com/punkave/sanitize-html),
-but escape-html **escapes** codes instead of removing them.
+but this library **escapes** codes instead of removing them.
 
 ## Installation
 
