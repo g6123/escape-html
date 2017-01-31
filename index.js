@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const url = require('url');
 
-const htmlTagRegExp = /<(\/?)([a-z][a-z0-9]*)\b([^>]*)>/gi;
+const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b([^>]*)>/gi;
 
 const defaultOptions = {
     allowedTags: [
@@ -16,7 +16,7 @@ const defaultOptions = {
         'a'
     ],
     allowedAttrs: {
-        a: ['href', 'target'],
+        'a': ['href', 'target'],
     },
     allowedProtocols: {
         '*': ['http', 'https', 'ftp', 'mailto']

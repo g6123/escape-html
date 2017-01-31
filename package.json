@@ -1,5 +1,5 @@
 {
-  "name": "escape-html",
+  "name": "escape-html-whitelist",
   "version": "0.1.0",
   "description": "Escape HTML tags with whitelist support",
   "main": "index.js",
