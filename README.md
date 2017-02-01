@@ -95,3 +95,13 @@ but deny any other thing such as a mailto link or javascript code.
     }
 }
 ```
+
+## Contribution
+
+If you have any bugs, suggestions, or any other questions, please create an issue.
+
+Pull requests are always welcome. Before submitting pull requests, just make sure your changes pass the unit test by running `npm test` command.
+
+## License
+
+[MIT](/LICENSE)

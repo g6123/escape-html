@@ -22,7 +22,8 @@ const defaultOptions = {
     allowNullProtocol: true
 };
 
-const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b([^>]*)>/gi;
+const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b(.*)>/gi;
+const htmlAttrsRegExp = /([a-z]+)(?:=(?:"(.+?)"|'(.+?)'))?\s*/gi;
 
 function escapeHtml(text, options) {
     options = _.extend(defaultOptions, options);
@@ -40,11 +41,14 @@ function escapeTag(isClosing, tagName, tagAttrs, options) {
     let _tagAttrs = '';
 
     if (!isClosing) {
-        tagAttrs.split(' ').forEach(function(attr) {
-            let [attrName, attrValue] = attr.trim().split('=', 2);
+        let match = null;
+
+        while ((match = htmlAttrsRegExp.exec(tagAttrs)) !== null) {
+            const attrName = match[1];
+            let attrValue = (match[2] || match[3]);
 
             if (!isAllowed(tagName, attrName, options.allowedAttrs)) {
-                return;
+                continue;
             }
 
             if (attrValue) {
@@ -59,7 +63,7 @@ function escapeTag(isClosing, tagName, tagAttrs, options) {
 
             _tagAttrs += (' ' + attrName);
             _tagAttrs += (attrValue ? ('="' + attrValue + '"') : '');
-        });
+        }
     }
 
     return '<' + (isClosing ? '/' : '') + tagName + _tagAttrs + '>';
@@ -87,7 +91,6 @@ function trimQuotes(text) {
 }
 
 function escapeHref(tagName, href, options) {
-    console.log(tagName, href);
     const parsed = url.parse(href);
 
     let protocol = parsed.protocol;
