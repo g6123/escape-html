@@ -1,4 +1,5 @@
-const _ = require('lodash');
+const _assign = require('lodash.assign');
+const _escape = require('lodash.escape');
 const url = require('url');
 
 const defaultOptions = {
@@ -26,11 +27,11 @@ const htmlTagRegExp = /<\s*(\/?)\s*([a-z][a-z0-9]*)\b(.*)>/gi;
 const htmlAttrsRegExp = /([a-z]+)(?:=(?:"(.+?)"|'(.+?)'))?\s*/gi;
 
 function escapeHtml(text, options) {
-    options = _.extend(defaultOptions, options);
+    options = _assign(defaultOptions, options);
 
     return text.replace(htmlTagRegExp, function(match, isClosing, tagName, tagAttrs) {
         if (options.allowedTags.indexOf(tagName) < 0) {
-            return _.escape(match);
+            return _escape(match);
         } else {
             return escapeTag((isClosing === '/'), tagName, tagAttrs, options);
         }
@@ -57,7 +58,7 @@ function escapeTag(isClosing, tagName, tagAttrs, options) {
                 if (attrName === 'href') {
                     attrValue = escapeHref(tagName, attrValue, options);
                 } else {
-                    attrValue = _.escape(attrValue);
+                    attrValue = _escape(attrValue);
                 }
             }
 
